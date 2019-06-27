@@ -7,4 +7,4 @@ How to use:
 
 2: cd tsne_app
 
-3: pytohn app_tsne.py
+3: python app_tsne.py
