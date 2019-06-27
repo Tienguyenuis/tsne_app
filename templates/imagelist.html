@@ -1,0 +1,5 @@
+
+{% for link in links %}
+<a href="/show_tsne/{{link}}">{{link}}</a><br>
+{% endfor %}<br>
+<a href={{ url_for('tsne.choose_file') }}>Go back to front page</a>

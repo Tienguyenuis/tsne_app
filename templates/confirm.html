@@ -1,0 +1,24 @@
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<ul class="alert">
+    {% for category, message in messages %}
+    <li style="color:red">{{ message }}</li>
+    <a href={{ url_for('tsne.choose_file') }}>Go back to front page</a>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+    <strong> Make t-SNE visualization for {{file}} ?</strong>
+    <button type="submit" onclick="myFunction()">Visualize</button>
+
+<p id="confirmed"></p>
+
+</form>
+<a href={{ url_for('tsne.choose_file') }}>Go back to front page</a>
+<script>
+        function myFunction() {
+            document.getElementById("confirmed").innerHTML = "The t-SNE visualization has started. This might take a while...";
+        }
+    </script>

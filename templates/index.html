@@ -1,0 +1,36 @@
+
+
+{% with messages = get_flashed_messages(with_categories=True) %}
+{% if messages %}
+<ul class="alert">
+    {% for category, message in messages %}
+    <li style="color:red">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+<form method="POST">
+    Choose which embedding file to visualize with t-SNE: <br>
+    {% for embedding in embeddings %}
+    <input type="radio", name ="file" value ={{embedding}} > {{embedding}}<br> 
+    {% endfor %}
+    <br>
+    Choose which labels to use: <br>
+    {% for label in labels %}
+    <input type="radio", name ="label" value ={{label}} > {{label}}<br> 
+    {% endfor %}
+    <br>
+    Choose how many iterations to use with t-SNE: <br>
+    <input type="radio", name ="iterations" value =500 > 500<br>
+    <input type="radio", name ="iterations" value =1000 > 1000<br>
+    <input type="radio", name ="iterations" value =1500 > 1500<br>
+    <input type="radio", name ="iterations" value =2000 > 2000<br>
+    <br>
+    <input name="confirmed", type="checkbox", value="confirmed">Confirm <br>
+    
+    <button type="submit">Submit</button>
+    
+</form>
+<br>
+<a href={{ url_for('tsne.tsne_links') }}>See finished plots</a>
